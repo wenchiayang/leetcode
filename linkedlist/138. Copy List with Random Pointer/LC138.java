@@ -68,7 +68,13 @@ public class LC138 {
 
         // step 1: for each node in the original list
         // insert a copied node between the node and node.next
-        // 1 -> 1' -> 2 -> 2' -> ... -> n -> n' -> null
+        // (1 -> 1' -> 2 -> 2' -> ... -> n -> n' -> null)
+        // Step
+        //      <----
+        //         curr
+        //          1 -> 2 -> 3 -> ... -> n -> null
+        // copy(1')
+        //   ----------->
         Node curr = head;
         while (curr != null) {
             // make a copy of curr node, insert it to 
@@ -80,7 +86,7 @@ public class LC138 {
         }
 
         // step 2: link the random pointer for the copied node
-        //               curr
+        //               curr copy
         // Origin List:   1 -> 1' -> 2 -> 2' -> ... -> n -> n' -> null
         // Origin Random: ---------->
         // Copy Random:        ---------->  
@@ -95,9 +101,9 @@ public class LC138 {
         }
 
         // step 3: extract the copied node
-        //       copied
+        //       copied------->
         // Origin List:   1 -> 1' -> 2 -> 2' -> ... -> n -> n' -> null
-        //               curr
+        //               curr------->
         curr = head;
         Node dummy = new Node(-1);
         Node copied = dummy;
