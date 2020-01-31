@@ -2,6 +2,25 @@
  * LC2
  */
 public class LC2 {
+    static class ListNode {
+        int val;
+        ListNode next;
+        ListNode(int x) { val = x; }
+        void printNodes() {
+            ListNode curr = this;
+    
+            while (curr != null) {
+                if (curr.next != null) {
+                    System.out.print(curr.val + " -> ");
+                } else {
+                    System.out.print(curr.val);
+                }
+                
+                curr = curr.next;
+            }
+        }
+    }
+
     /**
      * Solution
      * Time Complexity: O(max(m, n)), where m, n are length of l1 and l2
