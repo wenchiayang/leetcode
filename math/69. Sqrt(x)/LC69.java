@@ -61,7 +61,7 @@ public class LC69 {
         int[] answers = {2, 2, 1, 1, 2};
 
         for (int i = 0; i < inputs.length; i++) {
-            System.err.println("Example " + (i + 1) + ":");
+            System.out.println("Example " + (i + 1) + ":");
             int input = inputs[i];
             int answer = answers[i];
             int output = solution.mySqrt(input);
