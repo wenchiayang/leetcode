@@ -1,9 +1,9 @@
 import java.util.List;
-import java.util.Stack;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Stack;
 
-public class LC144 {
+public class LC94 {
     static class TreeNode {
         int val;
         TreeNode left;
@@ -48,83 +48,77 @@ public class LC144 {
 
     /**
      * Solution
-     * DFS
-     * https://leetcode.com/problems/binary-tree-preorder-traversal/solution/
+     * https://leetcode.com/problems/binary-tree-inorder-traversal/solution/
      * Time Complexity: O(n)
      * Space Complexity: O(n)
      * @param root
      * @return
      */
-
-    public List<Integer> preorderTraversal_recursive(TreeNode root) {
-        return preorder(root);
-    }
-
-    private List<Integer> preorder(TreeNode node) {
+    public List<Integer> inorderTraversal_iterative(TreeNode root) {
         List<Integer> paths = new ArrayList<>();
 
-        // base case
-        if (node == null) return new ArrayList<>();
+        // check corner cases
+        if (root == null) return paths;
 
-        // Recursive call
-        List<Integer> left_paths = preorderTraversal_recursive(node.left);
-        List<Integer> right_paths = preorderTraversal_recursive(node.right);
+        Stack<TreeNode> stack = new Stack<>();
+        TreeNode curr = root;
         
-        // DLR
-        paths.add(node.val);
-        paths.addAll(left_paths);
-        paths.addAll(right_paths);
+        // LDR
+        while (curr != null || !stack.isEmpty()) {
+            // L
+            while (curr != null) {
+                stack.push(curr);
+                curr = curr.left;
+            }
+
+            // D
+            curr = stack.pop();
+            paths.add(curr.val);
+
+            // R
+            curr = curr.right;
+        }
 
         return paths;
     }
 
     /**
      * Solution
-     * DFS
-     * http://www.goodtecher.com/leetcode-144-binary-tree-preorder-traversal/
+     * https://leetcode.com/problems/binary-tree-inorder-traversal/solution/
      * Time Complexity: O(n)
      * Space Complexity: O(n)
      * @param root
      * @return
      */
-    public List<Integer> preorderTraversal_iterative(TreeNode root) {
+    public List<Integer> inorderTraversal_recursive(TreeNode root) {
+        return inorder(root);
+    }
+
+    private List<Integer> inorder(TreeNode node) {
         List<Integer> paths = new ArrayList<>();
-        if (root == null) return paths;
 
-        // preorder: DLR
-        Stack<TreeNode> stack = new Stack<>();
-        stack.push(root);
+        // base case
+        if (node == null) return paths;
 
-        while (!stack.isEmpty()) {
-            TreeNode node = stack.pop();
+        // Recursive call
+        List<Integer> left_path = inorder(node.left);
+        List<Integer> right_path = inorder(node.right);
 
-            // DLR
-            paths.add(node.val);
-
-            // Notice: right before out
-            // stack is LIFO
-            // so put right first and left last
-            // next round when poping out node
-            // left node will pop out first
-            if (node.right != null) {
-                stack.push(node.right);
-            }
-
-            if (node.left != null) {
-                stack.push(node.left);
-            }
-        }
+        // LDR
+        paths.addAll(left_path);
+        paths.add(node.val);
+        paths.addAll(right_path);
 
         return paths;
     }
 
     public static void main(String[] args) {
-        System.out.println("144. Binary Tree Preorder Traversal [medium]");
-        LC144 solution = new LC144();
+        System.out.println("94. Binary Tree Inorder Traversal [medium]");
+        LC94 solution = new LC94();
         TreeNode root = solution.generateTree();
-        int[] answer = {1, 2, 3};
-        List<Integer> output_iterative = solution.preorderTraversal_iterative(root);
-        List<Integer> output_recursive = solution.preorderTraversal_recursive(root);
+        int[] answer = {4, 2, 5, 1, 6, 3};
+        List<Integer> output_iterative = solution.inorderTraversal_iterative(root);
+        List<Integer> output_recursive = solution.inorderTraversal_recursive(root);
 
         System.out.println("Example: ");
         System.out.print("Input: [ ");
@@ -136,9 +130,12 @@ public class LC144 {
     }
 
     private TreeNode generateTree() {
-        TreeNode t1 = new TreeNode(1);
-        t1.right = new TreeNode(2);
-        t1.right.left = new TreeNode(3);
-        return t1;
+        TreeNode t = new TreeNode(1);
+        t.left = new TreeNode(2);
+        t.right = new TreeNode(3);
+        t.left.left = new TreeNode(4);
+        t.left.right = new TreeNode(5);
+        t.right.left = new TreeNode(6);
+        return t;
     }
 }
