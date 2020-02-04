@@ -101,7 +101,7 @@ public class LC144 {
             // DLR
             paths.add(node.val);
 
-            // Notice: right before out
+            // Notice: right before left
             // stack is LIFO
             // so put right first and left last
             // next round when poping out node
