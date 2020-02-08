@@ -30,7 +30,6 @@ public class LC121 {
             }
         }
 
-
         return max;
     }
 
