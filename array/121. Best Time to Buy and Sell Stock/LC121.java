@@ -74,6 +74,7 @@ public class LC121 {
             int output = solution.maxProfit(prices);
             boolean score = answer == output;
 
+            System.out.println("Example " + (i + 1) + ":");
             System.out.println("Input: " + Arrays.toString(prices));
             System.out.println("Output: " + output);
             System.out.println("Answer: " + answer);
