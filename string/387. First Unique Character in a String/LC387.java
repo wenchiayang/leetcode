@@ -77,5 +77,4 @@ public class LC387 {
             System.out.println();
         }
     }
-    
 }
