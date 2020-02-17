@@ -63,6 +63,5 @@ public class LC557 {
             System.out.println("Score: " + score);
             System.out.println();
         }
-
     }
 }
