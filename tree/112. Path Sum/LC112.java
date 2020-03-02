@@ -128,7 +128,7 @@ public class LC112 {
             System.out.println("Example: ");
             System.out.print("Input: [ ");
             root.printLevelOrder();
-            System.out.print("]\n");
+            System.out.print("], sum = " + sum + "\n");
             System.out.println("Output(recursive): " + output_recursive);
             System.out.println("Output(iterative): " + output_iterative);
             System.out.println("Answer: " + answer);
