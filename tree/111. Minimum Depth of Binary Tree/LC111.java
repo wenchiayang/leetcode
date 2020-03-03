@@ -161,7 +161,7 @@ public class LC111 {
     }
     
     public static void main(String[] args) {
-        System.out.println("687. Longest Univalue Path [easy]");
+        System.out.println("111. Minimum Depth of Binary Tree [easy]");
         LC111 solution = new LC111();
         TreeNode[] trees = solution.generateTrees();
         int[] answers = {2};
