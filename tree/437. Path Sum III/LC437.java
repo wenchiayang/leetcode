@@ -159,7 +159,7 @@ public class LC437 {
         int[] answers = {3};
         
         for (int i = 0; i < answers.length; i++) {
-            TreeNode root = trees[0];
+            TreeNode root = trees[i];
             int sum = sums[0];
             int output_recursive = solution.pathSum_recursive(root, sum);
             int output_iterative = solution.pathSum_prefix(root, sum);
